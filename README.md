@@ -16,6 +16,7 @@ To specify compilation arguments, define ECL_COMPILE_ARGUMENT in the translation
 the tool in included, with a string as argument. (gcc compiler by default but can be changed).
 
 INFO:
+
   The utility only execute arguments inside of a specific function registered as __init__().
   The __init__() function COULD NOT receive parsed arguments.
   If the external file or char array doesn't contain this function, the program is expected to crash and log
@@ -24,6 +25,7 @@ INFO:
   and used inside of the arbitrary executed code.
 
 WARNING:
+
   While using c++ projects (inside of the injected code), the __init__() function must be declared using
   extern "C" in order to be recognised by the c++ mangle name specification.
   If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the init()
