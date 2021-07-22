@@ -5,15 +5,15 @@ It contains evalc() for loading char arrays and evalf() for loading files.
 The utility uses the dynamic library loader to open files using dlopen() and getting function
 pointers dlsym(). Because of that, the utility COULD NOT run on Windows (MacOSX untested) and
 must be compiled using the -ldl in gcc (example below).
-Also, the utility REQUIRED gcc or g++ nor other compilers(depends of the project)
+Also, the utility REQUIRES gcc or g++ or other compilers(depends of the project)
 to be installed in the user's machine (compilation done at runtime requires compilers).
 All the defined preprocessors can be called alone as for every modules of the utility.
-The preprocessors are defined using ECL_ prefix.
+The preprocessors are defined using the ECL_ prefix.
 
 Initialisation of custom compiling argument isn't required, but suggested for more optimisation.
-Hard coded compilation arguments are defined as following: "gcc/g++ -shared -o tmp.so tmp.c"
+Hard coded compilation arguments are defined as following: "gcc/g++ -shared -o tmp.so tmp.c".
 To specify compilation arguments, define ECL_COMPILE_ARGUMENT in the translation unit in which
-the tool in included, with a string as argument. (gcc compiler by default but can be changed).
+the tool is included, with a string as argument. (gcc compiler by default but can be changed).
 
 INFO:
 
