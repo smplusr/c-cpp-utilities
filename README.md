@@ -34,17 +34,17 @@ FUNCTION USAGE:
 -  evalf(const char* file)         //Where file represents the input file
 
 EXAMPLES:
- > File example in C:
- >   #include<stdio.h>
- >   void __init__(){
- >     printf("Hello World in C from external file !\n");
- >   }
+ > - File example in C:
+ > -   #include<stdio.h>
+ > -   void __init__(){
+ > -     printf("Hello World in C from external file !\n");
+ > -   }
     
   File example in C++:
- >   #include<iostream>
- >     extern "C" void __init__(){
- >       std::cout<<"Hello World in C++ from external file !"<<std::endl;
- > }
+ > -   #include<iostream>
+ > -     extern "C" void __init__(){
+ > -       std::cout<<"Hello World in C++ from external file !"<<std::endl;
+ > - }
   
   Char array example in C:
  >    "#include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
