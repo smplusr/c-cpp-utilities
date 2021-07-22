@@ -1,9 +1,4 @@
-# auto-inapp-recompiler
-
-These header files are debug utilities that aid any kind of project to be recompiled once closed.
-The utility by itself is entended to be used for debug builds only.
-
-[rcp.h]
+# auto-inapp-recompiler [rcp.h]
 
 This auto-recompile utility supports C and C++ projects, 
 it must be included in the main source file in order to work properly.
@@ -17,3 +12,5 @@ HEADER_PATH:		the path to the "header" bin.
 
 The paths must lead to a (chosen extension and named) file that will feed a system() function
 and parse all the line as OS speecific argument. 
+
+--------------------------------------------------------------------------------------------------------------
