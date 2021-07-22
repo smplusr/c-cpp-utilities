@@ -16,41 +16,41 @@ To specify compilation arguments, define ECL_COMPILE_ARGUMENT in the translation
 the tool in included, with a string as argument. (gcc compiler by default but can be changed).
 
 INFO:
-  The utility only execute arguments inside of a specific function registered as __init__().
-  The __init__() function COULD NOT receive parsed arguments.
-  If the external file or char array doesn't contain this function, the program is expected to crash and log
-  a Segmentation Fault.
-  External libraries or internal modules (previously declared inside of the program, not external) can be included
-  and used inside of the arbitrary executed code.
+-  The utility only execute arguments inside of a specific function registered as __init__().
+-  The __init__() function COULD NOT receive parsed arguments.
+-  If the external file or char array doesn't contain this function, the program is expected to crash and log
+-  a Segmentation Fault.
+-  External libraries or internal modules (previously declared inside of the program, not external) can be included
+-  and used inside of the arbitrary executed code.
 
 WARNING:
-  While using c++ projects (inside of the injected code), the __init__() function must be declared using
-  extern "C" in order to be recognised by the c++ mangle name specification.
-  If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the init()
-  function of the program.
+-  While using c++ projects (inside of the injected code), the __init__() function must be declared using
+-  extern "C" in order to be recognised by the c++ mangle name specification.
+-  If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the init()
+-  function of the program.
 
 FUNCTION USAGE:
-  evalc(const char data[256])     //Where data represents the input char array
-  evalf(const char* file)         //Where file represents the input file
+-  evalc(const char data[256])     //Where data represents the input char array
+-  evalf(const char* file)         //Where file represents the input file
 
 EXAMPLES:
-  File example in C:
-    #include<stdio.h>
-    void __init__(){
-      printf("Hello World in C from external file !\n");
-    }
+ > File example in C:
+ >   #include<stdio.h>
+ >   void __init__(){
+ >     printf("Hello World in C from external file !\n");
+ >   }
     
   File example in C++:
-    #include<iostream>
-      extern "C" void __init__(){
-        std::cout<<"Hello World in C++ from external file !"<<std::endl;
-  }
+ >   #include<iostream>
+ >     extern "C" void __init__(){
+ >       std::cout<<"Hello World in C++ from external file !"<<std::endl;
+ > }
   
   Char array example in C:
-     "#include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
+ >    "#include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
   
   Char array example in C++:
-    "#include<iostream>\n extern "C" void __init(){std::cout<<\"Hello World in C from external file !\"<<std::endl;}"
+ >   "#include<iostream>\n extern "C" void __init(){std::cout<<\"Hello World in C from external file !\"<<std::endl;}"
 
 --------------------------------------------------------------------------------------------------------------
 
