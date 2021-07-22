@@ -2,7 +2,7 @@
 
 This utility is a sort of replacement of the eval() function known in some interpreted languages.
 It contains evalc() for loading char arrays and evalf() for loading files.
-The utility uses the dynamic lybrary loader to open files using dlopen() and getting function
+The utility uses the dynamic library loader to open files using dlopen() and getting function
 pointers dlsym(). Because of that, the utility COULD NOT run on Windows (MacOSX untested) and
 must be compiled using the -ldl in gcc (example below).
 Also, the utility REQUIRED gcc or g++ nor other compilers(depends of the project)
