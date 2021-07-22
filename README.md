@@ -60,14 +60,6 @@ EXAMPLES:
 
 --------------------------------------------------------------------------------------------------------------
 
-# cross-c-cpp-logger [log.h]
-  
-  This small logging module defines a LOG(imp,dat) that will log some parsed characters with some level of importance
-  in both C (printf()) and C++ (std::cout).
-  Entended as debug feature.
-  
---------------------------------------------------------------------------------------------------------------
-
 # auto-inapp-recompiler [rcp.h]
 
 This auto-recompile utility supports C and C++ projects, 
