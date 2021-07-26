@@ -44,16 +44,19 @@ EXAMPLES:
     void __init__(){
       printf("Hello World in C from external file !\n");
     }
-    
+```
+```c++    
   //File example in C++:
     #include<iostream>
       extern "C" void __init__(){
         std::cout<<"Hello World in C++ from external file !"<<std::endl;
   }
-  
+```
+```c
   //Char array example in C:
     #include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
-  
+```
+```c++
   //Char array example in C++:
     "#include<iostream>\n extern "C" void __init(){std::cout<<\"Hello World in C from external file !\"<<std::endl;}"
 ```
