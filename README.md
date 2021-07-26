@@ -17,7 +17,7 @@ the tool is included, with a string as argument. (gcc compiler by default but ca
 
 INFO:
 
-  The utility only execute arguments inside of a specific function registered as '__init__()'.
+  The utility only execute arguments inside of a specific function registered as __init__().
   The __init__() function COULD NOT receive parsed arguments.
   If the external file or char array doesn't contain this function, the program is expected to crash and log
   a Segmentation Fault.
@@ -26,9 +26,9 @@ INFO:
 
 WARNING:
 
-  While using c++ projects (inside of the injected code), the '__init__()' function must be declared using
+  While using c++ projects (inside of the injected code), the __init__() function must be declared using
   extern "C" in order to be recognised by the c++ mangle name specification.
-  If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the '__init__()'
+  If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the __init__()
   function of the program.
 
 FUNCTION USAGE:
