@@ -54,7 +54,7 @@ EXAMPLES:
 ```
 ```c
   //Char array example in C:
-    #include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
+    "#include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
 ```
 ```c++
   //Char array example in C++:
