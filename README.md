@@ -63,6 +63,12 @@ EXAMPLES:
 
 --------------------------------------------------------------------------------------------------------------
 
+# fake-objects-in-c [foc.h]
+
+PLEASE ADD DESCRIPTION WHEN DONE
+
+--------------------------------------------------------------------------------------------------------------
+
 # auto-inapp-recompiler [rcp.h]
 
 This auto-recompile utility supports C and C++ projects, 
