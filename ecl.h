@@ -4,7 +4,7 @@
 #include<cstring>
 #include<dlfcn.h>
 #ifndef ECL_COMPILE_INSTRUCTION
-	#define ECL_COMPILE_INSTRUCTION "g++ -shared -o tmp.so tmp.c"
+	#define ECL_COMPILE_INSTRUCTION "g++ -fPIC -shared -o tmp.so tmp.c"
 #endif
 #define ECL_GET_DL_POINTER auto init=reinterpret_cast<void(*)()>(dlsym(lib,"__init__"));
 #endif
@@ -15,7 +15,7 @@
 #include<dlfcn.h>
 #include<string.h>
 #ifndef ECL_COMPILE_INSTRUCTION
-	#define ECL_COMPILE_INSTRUCTION "gcc -shared -o tmp.so tmp.c" 
+	#define ECL_COMPILE_INSTRUCTION "gcc -fPIC -shared -o tmp.so tmp.c" 
 #endif
 #define ECL_GET_DL_POINTER void (*init)()=dlsym(lib,"__init__");
 #endif
