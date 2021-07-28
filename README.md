@@ -63,9 +63,31 @@ EXAMPLES:
 
 --------------------------------------------------------------------------------------------------------------
 
-# fake-objects-in-c [foc.h]
+# structure-objects-in-c [foc.h]
 
-PLEASE ADD DESCRIPTION WHEN DONE
+This file can be used to create a pseudo object oriented programming and classes using C structs.
+Of course, this module is not compatible with C++ because it supports classes.
+The file contains 3 functions: add_item, del_item and upt_item. Further examples below.
+It also contains definitions for the num_item, and a typedef of void and typedef of struct.
+A preprocessor is also defined.
+
+EXAMPLES:
+```c
+  //Examples in sample program (main.c, int main())
+    
+    //Declaration of the "structural object" object_instance with predefined type ITEM
+    ITEM object_instance;
+    //Defining the function (func) of object_instance
+    object_instance.func=<FUNCTION>;
+    //Adding object_instance to the item_list[] array
+    add_item(object_instance);
+    
+    //Updating all the items inside the item_list[] array
+    upt_item();
+    
+    //Removing item by if 0
+    del_item(0);
+```
 
 --------------------------------------------------------------------------------------------------------------
 
