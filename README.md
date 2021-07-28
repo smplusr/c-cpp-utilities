@@ -63,9 +63,9 @@ EXAMPLES:
 
 --------------------------------------------------------------------------------------------------------------
 
-# structure-objects-in-c [foc.h]
+# structure-objects-in-c [soc.h]
 
-This file can be used to create a pseudo object oriented programming and classes using C structs.
+This file can be used to create a pseudo object oriented programming using C structs.
 Of course, this module is not compatible with C++ because it supports classes.
 The file contains 3 functions: add_item, del_item and upt_item. Further examples below.
 It also contains definitions for the num_item, and a typedef of void and typedef of struct.
