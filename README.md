@@ -28,7 +28,7 @@ WARNING:
 
   While using c++ projects (inside of the injected code), the __init__() function must be declared using
   extern "C" in order to be recognised by the c++ mangle name specification.
-  If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the init()
+  If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the __init__()
   function of the program.
 
 FUNCTION USAGE:
@@ -44,18 +44,49 @@ EXAMPLES:
     void __init__(){
       printf("Hello World in C from external file !\n");
     }
-    
+```
+```c++    
   //File example in C++:
     #include<iostream>
       extern "C" void __init__(){
         std::cout<<"Hello World in C++ from external file !"<<std::endl;
   }
-  
+```
+```c
   //Char array example in C:
-    #include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
-  
+    "#include<stdio.h>\n void __init(){printf(\"Hello World in C from external file !\");}"
+```
+```c++
   //Char array example in C++:
     "#include<iostream>\n extern "C" void __init(){std::cout<<\"Hello World in C from external file !\"<<std::endl;}"
+```
+
+--------------------------------------------------------------------------------------------------------------
+
+# structure-objects-in-c [soc.h]
+
+This file can be used to create a pseudo object oriented programming using C structs.
+Of course, this module is not compatible with C++ because it supports classes.
+The file contains 3 functions: add_item, del_item and upt_item. Further examples below.
+It also contains definitions for the num_item, and a typedef of void and typedef of struct.
+A preprocessor is also defined.
+
+EXAMPLES:
+```c
+  //Examples in sample program (main.c, int main())
+    
+    //Declaration of the "structural object" object_instance with predefined type ITEM
+    ITEM object_instance;
+    //Defining the function (func) of object_instance
+    object_instance.func=<FUNCTION>;
+    //Adding object_instance to the item_list[] array
+    add_item(object_instance);
+    
+    //Updating all the items inside the item_list[] array
+    upt_item();
+    
+    //Removing item by if 0
+    del_item(0);
 ```
 
 --------------------------------------------------------------------------------------------------------------
