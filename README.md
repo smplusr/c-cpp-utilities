@@ -30,6 +30,13 @@ WARNING:
   extern "C" in order to be recognised by the c++ mangle name specification.
   If not done, the function causes undefined behaviours that log as Segmentation Fault when calling the __init__()
   function of the program.
+  When using elc.h and soc.h together in linux and adding new items using the add_item() function inside of
+  an evaluated file evalf(), please link you program using the linking option --export-dynamic as following:
+  ```
+  gcc -Wl,--export-dynamic
+  ```
+  Otherwise, the dynamic library generated for interpretation of C code will have different global variables.
+  The variables item_list[256] and num_item will not be shared.
 
 FUNCTION USAGE:
   ```c
