@@ -1,5 +1,3 @@
-#ifndef __cplusplus
-
 #define ITEM_LOOP(x)\
     for(unsigned int i=0;i<num_item;i++)\
         x;
@@ -28,5 +26,3 @@ void del_item(unsigned int id){
 void upt_item(){
 	ITEM_LOOP(item_list[i].func());
 }
-
-#endif
