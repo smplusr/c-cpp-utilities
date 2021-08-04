@@ -1,13 +1,15 @@
 #ifdef __linux__
 
 #ifdef __cplusplus
-#include<cstring>
+#include<cstdio>
+#include<cstdlib>
 #include<dlfcn.h>
+#include<cstring>
 #include<unistd.h>
 #ifndef ECL_COMPILE_INSTRUCTION
 	#define ECL_COMPILE_INSTRUCTION "g++ -fPIC -shared -o tmp.so tmp.c"
 #endif
-#define ECL_GET_DL_POINTER auto init=reinterpret_cast<void(*)()>(dlsym(lib,"__init__"));
+#define ECL_GET_DL_POINTER void (*init)()=reinterpret_cast<void(*)()>(dlsym(lib,"__init__"));
 #endif
 
 #ifndef __cplusplus
@@ -23,7 +25,6 @@
 #endif
 
 #define ECL_COMPILE system(ECL_COMPILE_INSTRUCTION);
-
 #define ECL_LOAD_LIB()\
 	void *lib;\
 	lib=dlopen("./tmp.so",RTLD_LAZY);\
