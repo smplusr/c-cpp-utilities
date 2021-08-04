@@ -78,6 +78,15 @@ The file contains 3 functions: add_item, del_item and upt_item. Further examples
 It also contains definitions for the num_item, and a typedef of void and typedef of struct.
 A preprocessor is also defined.
 
+WARNING:
+
+When using ecl.h with this module, function used as <ITEM_NAME>.func musn't be redefined inside the external evaluated file.
+Otherwise, a Segmentation Fault will be returned by the main program.
+You still can use functions implemented by the main program or previously evaluated external files, 
+but it will be required to resolve missing dependencies (including linking against the main program's extenal
+libraries such as OpenGL) using the ECL_COMPILE_INSTRUCTION 
+(but this might not be the case, only of a Segmentation Fault occures).
+
 EXAMPLES:
 ```c
   //Examples in sample program (main.c, int main())
