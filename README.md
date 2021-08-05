@@ -93,8 +93,13 @@ EXAMPLES:
     
     //Declaration of the "structural object" object_instance with predefined type ITEM
     ITEM object_instance;
+    
+    //Defining the data of object_instance by casting <TYPE> to <VARIABLE>
+    object_instance.data=((<TYPE>*)<VARIABLE>);
+    
     //Defining the function (func) of object_instance
     object_instance.func=<FUNCTION>;
+    
     //Adding object_instance to the item_list[] array
     add_item(object_instance);
     
@@ -103,6 +108,9 @@ EXAMPLES:
     
     //Removing item by if 0
     del_item(0);
+    
+    //Accessing all object in the item_list and printing their id
+    ITEM_LOOP(printf("%d",item_list[i].id);)
 ```
 
 --------------------------------------------------------------------------------------------------------------
