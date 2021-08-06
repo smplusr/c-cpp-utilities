@@ -131,3 +131,24 @@ HEADER_PATH:		the path to the "header" bin.
 
 The paths must lead to a (chosen extension and named) file that will feed a system() function
 and parse all the line as OS speecific argument. 
+
+--------------------------------------------------------------------------------------------------------------
+
+# terminal-key-hook [tkh.h]
+
+The minimal terminal key hook utility is a really basic key registration system based
+around the kbhit() and getch() ncurses functions. Though, they have been remastered to prevent
+the execution lag due to input wait time. A special function is integrated, called tkhPollKeys().
+This function allows the application to register the last pressed input (using the last two functions)
+and put the key (only one available per frame) inside the tkh_key_buffer[].
+This key buffer will remain unchanged if the poll key function isn't called again, allowing calculation
+using the content of the key buffer.
+The utility also contains key macros, giving name to the pressed keys. In that fashion, keys inside the 
+key buffer can be called by their preprocessor name, such as TKH_KEY_A for the 'a' character/key.
+
+WARNING: This input registation method is really limited because of it's closeness to the terminal emulator running the program.
+Because of this, unfocussing the terminal (lastly the front process) will completely disable the input registration.
+Key detection is also affected by the terminal emulator's speed and ability to register key events.
+Most of the terminal emulators will repeat the last key pressed after some time, not doing it instantly, making the utility
+horrible for game purposes. And still, only one key can be processed at the time (again due to terminal emulators).
+And yet, this utility is only entended for linux.
