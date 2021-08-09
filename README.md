@@ -70,34 +70,6 @@ EXAMPLES:
 
 --------------------------------------------------------------------------------------------------------------
 
-# structure-objects-in-c [soc.h]
-
-This file can be used to create a pseudo object oriented programming using C structs.
-Of course, this module is not compatible with C++ because it supports classes.
-The file contains 3 functions: add_item, del_item and upt_item. Further examples below.
-It also contains definitions for the num_item, and a typedef of void and typedef of struct.
-A preprocessor is also defined.
-
-EXAMPLES:
-```c
-  //Examples in sample program (main.c, int main())
-    
-    //Declaration of the "structural object" object_instance with predefined type ITEM
-    ITEM object_instance;
-    //Defining the function (func) of object_instance
-    object_instance.func=<FUNCTION>;
-    //Adding object_instance to the item_list[] array
-    add_item(object_instance);
-    
-    //Updating all the items inside the item_list[] array
-    upt_item();
-    
-    //Removing item by if 0
-    del_item(0);
-```
-
---------------------------------------------------------------------------------------------------------------
-
 # auto-inapp-recompiler [rcp.h]
 
 This auto-recompile utility supports C and C++ projects, 
@@ -114,3 +86,93 @@ HEADER_PATH:		the path to the "header" bin.
 
 The paths must lead to a (chosen extension and named) file that will feed a system() function
 and parse all the line as OS speecific argument. 
+
+--------------------------------------------------------------------------------------------------------------
+
+# raw-key-input [rki.h] && raw-mouse-input [rmi.h]
+
+These utilities are mouse and keyboard handler for linux.
+They are similar to glut (freeglut) or glfw input managing system, but only supports linux (as of current version).
+See the following example for more information about how to use the api.
+
+EXAMPLE:
+```c
+/* Must be defined before including the rki or rmi header file.
+ * If the dev input file is not declared before including rki.h or rmi.h, it will be defined
+ * inside the headers with the default input file (same as following). */
+#define RKI_INPUT_FILE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+#define KMI_INPUT_FILE "/dev/input/mice"
+#include"rki.h"
+#include"rmi.h"
+
+#include<stdio.h>
+
+int key_buffer[256];
+
+void key_callback(int key,int act){
+	if(act==RKI_KEY_PRESSED) key_buffer[key]=1;
+	if(act==RKI_KEY_RELEASE) key_buffer[key]=0;
+}
+void mouse_callback(int x,int y,int button[3]){
+	printf("x=%d, y=%d, l=%d, m=%d, r=%d\n",x,y,button[0],button[1],button[2]);
+}
+
+int main(void){
+	/* Defining callbacks for keyboard and mouse. */
+	rkiBindCallback(&key_callback);
+	rmiBindCallback(&mouse_callback);
+	while(1){
+		/* The key is in raw format (KEY_Q or code 16 is mapped on A
+		 * azerty keyboards). */
+		if(key_buffer[KEY_Q]) printf("%s\n","Hello World!");
+		/* Polling events from keyboard and mouse. */
+		rkiPollEvent(); rmiPollEvent();
+	}
+		
+}
+```
+
+--------------------------------------------------------------------------------------------------------------
+
+# structure-objects-in-c [soc.h]
+
+This file can be used to create a pseudo object oriented programming using C structs.
+Of course, this module is not compatible with C++ because it supports classes.
+The file contains 3 functions: add_item, del_item and upt_item. Further examples below.
+It also contains definitions for the num_item, and a typedef of void and typedef of struct.
+A preprocessor is also defined.
+
+WARNING:
+
+When using ecl.h with this module, function used as <ITEM_NAME>.func musn't be redefined inside the external evaluated file.
+Otherwise, a Segmentation Fault will be returned by the main program.
+You still can use functions implemented by the main program or previously evaluated external files, 
+but it will be required to resolve missing dependencies (including linking against the main program's extenal
+libraries such as OpenGL) using the ECL_COMPILE_INSTRUCTION 
+(but this might not be the case, only of a Segmentation Fault occures).
+
+EXAMPLES:
+```c
+  //Examples in sample program (main.c, int main())
+    
+    //Declaration of the "structural object" object_instance with predefined type ITEM
+    ITEM object_instance;
+    
+    //Defining the data of object_instance by casting <TYPE> to <VARIABLE>
+    object_instance.data=((<TYPE>*)<VARIABLE>);
+    
+    //Defining the function (func) of object_instance
+    object_instance.func=<FUNCTION>;
+    
+    //Adding object_instance to the item_list[] array
+    add_item(object_instance);
+    
+    //Updating all the items inside the item_list[] array
+    upt_item();
+    
+    //Removing item by if 0
+    del_item(0);
+    
+    //Accessing all object in the item_list and printing their id
+    ITEM_LOOP(printf("%d",item_list[i].id);)
+```
