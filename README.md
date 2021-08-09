@@ -142,9 +142,9 @@ See the following example for more information about how to use the api.
 
 EXAMPLE:
 ```c
-/* Must be defined before including the rki header file.
- * If the file is not declared before including rki.h, it will be defined
- * inside the rki.h with default input file (same as following). */
+/* Must be defined before including the rki or rmi header file.
+ * If the dev input file is not declared before including rki.h or rmi.h, it will be defined
+ * inside the headers with the default input file (same as following). */
 #define RKI_INPUT_FILE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
 #define KMI_INPUT_FILE "/dev/input/mice"
 #include"rki.h"
