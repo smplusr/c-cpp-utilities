@@ -18,7 +18,7 @@ void rmiBindCallback(void (*mouse_callback)(int,int,int*)){
 	MouseCallback=mouse_callback;
 }
 
-void rmiPollEvent(){
+void rmiPollEvents(){
 	unsigned char data[4]; int bytes;
 	int l,m,r; signed char x,y;
 	bytes=read(rmi_fd,data,sizeof(data));
