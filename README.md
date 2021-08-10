@@ -89,10 +89,10 @@ and parse all the line as OS speecific argument.
 
 --------------------------------------------------------------------------------------------------------------
 
-# raw-key-input [rki.h] && raw-mouse-input [rmi.h]
+# raw-system-input [rsi.h]
 
-These utilities are mouse and keyboard handler for linux.
-They are similar to glut (freeglut) or glfw input managing system, but only supports linux (as of current version).
+This input utility is a mouse and keyboard handler for linux.
+It is similar to glut (freeglut) or glfw input managing system, but only supports linux (as of current version).
 See the following example for more information about how to use the api.
 
 EXAMPLE:
@@ -100,10 +100,9 @@ EXAMPLE:
 /* Must be defined before including the rki or rmi header file.
  * If the dev input file is not declared before including rki.h or rmi.h, it will be defined
  * inside the headers with the default input file (same as following). */
-#define RKI_INPUT_FILE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-#define KMI_INPUT_FILE "/dev/input/mice"
-#include"rki.h"
-#include"rmi.h"
+#define RSI_MOUSE_INPUT_FILE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+#define RSI_MOUSE_INPUT_FILE "/dev/input/mice"
+#include"rsi.h"
 
 #include<stdio.h>
 
@@ -119,14 +118,14 @@ void mouse_callback(int x,int y,int button[3]){
 
 int main(void){
 	/* Defining callbacks for keyboard and mouse. */
-	rkiBindCallback(&key_callback);
-	rmiBindCallback(&mouse_callback);
-	while(1){
+	rsiBindCallback(&key_callback,&mouse_callback);
+	while(!key_buffer[KEY_ESC]){
 		/* The key is in raw format (KEY_Q or code 16 is mapped on A
 		 * azerty keyboards). */
 		if(key_buffer[KEY_Q]) printf("%s\n","Hello World!");
-		/* Polling events from keyboard and mouse. */
-		rkiPollEvent(); rmiPollEvent();
+		/* Polling events from keyboard and mouse.
+		 * similar to keybrPollEvents(); mousePollEvents(); */
+		 rsiPollEvents();
 	}
 		
 }
