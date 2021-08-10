@@ -126,7 +126,7 @@ int main(void){
 		 * azerty keyboards). */
 		if(key_buffer[KEY_Q]) printf("%s\n","Hello World!");
 		/* Polling events from keyboard and mouse. */
-		rkiPollEvent(); rmiPollEvent();
+		rkiPollEvents(); rmiPollEvents();
 	}
 		
 }
