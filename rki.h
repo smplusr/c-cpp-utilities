@@ -22,7 +22,7 @@ void rkiBindCallback(void (*key_callback)(int,int)){
 	KeyCallback=key_callback;
 }
 
-void rkiPollEvent(){
+void rkiPollEvents(){
 	struct input_event ev; int bytes;
 	bytes=read(rki_fd,&ev,sizeof ev);
 	if(bytes>0) if(ev.type=EV_KEY && ev.value==0|1|2 && ev.code!=0) KeyCallback((int)ev.code,(int)ev.value);
