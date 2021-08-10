@@ -21,8 +21,6 @@ int keybr_fd,mouse_fd;
 void (*KeyCallback)(int key,int act);
 void (*MouseCallback)(int x,int y,int b[3]);
 
-void rsiPollEvents(){keybrPollEvents(); MousePollEvents();}
-
 void rsiBindCallback(void (*key_callback)(int,int),void (*mouse_callback)(int,int,int*)){
 	const char *keybr_dev=RSI_KEYBOARD_INPUT_FILE,*mouse_dev=RSI_MOUSE_INPUT_FILE;
 	if(!mouse_fd) mouse_fd=open(mouse_dev,O_RDONLY | O_NONBLOCK);
@@ -30,17 +28,17 @@ void rsiBindCallback(void (*key_callback)(int,int),void (*mouse_callback)(int,in
 	KeyCallback=key_callback; MouseCallback=mouse_callback;
 }
 
-void KeybrPollEvents(){
+void keybrPollEvents(){
 	struct input_event ev; int bytes;
-	bytes=read(rki_fd,&ev,sizeof ev);
+	bytes=read(keybr_fd,&ev,sizeof ev);
 	if(bytes>0) if(ev.type=EV_KEY && ev.value==0|1|2 && ev.code!=0) KeyCallback((int)ev.code,(int)ev.value);
 	else return;
 }
 
-void MousePollEvents(){
+void mousePollEvents(){
 	unsigned char data[4]; int bytes;
 	int l,m,r; signed char x,y;
-	bytes=read(rmi_fd,data,sizeof(data));
+	bytes=read(mouse_fd,data,sizeof(data));
 	if(bytes>0){
 		x=data[1]; y=data[2];
 		l=data[0]&0x1; r=data[0]&0x2; m=data[0]&0x4;
@@ -48,5 +46,7 @@ void MousePollEvents(){
 		MouseCallback(x,y,b);
 	}else{return;}
 }
+
+void rsiPollEvents(){keybrPollEvents(); mousePollEvents();}
 
 #endif
