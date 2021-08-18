@@ -10,7 +10,7 @@ to the running application's architecture (as it is technically machine code).
 INFO:
 Shellcodes can be extracted from various utilities like GDB or Objdump from compiled (but not linked)
 C or C++ codes.
-It is recommended to use the -fno-pie and -no-pie during the shellcode compilation in order to get
+It is recommended to use the -fno-pic and -no-pie during the shellcode compilation in order to get
 static stack memory pointer allocation and getting rid of unnecessary sections.
 The Optimisation flags -O(x) are also recommended as they creates shorter shellcodes.
 
