@@ -4,8 +4,8 @@ This utility is a sort of replacement of the eval() function known in some inter
 It contains evalc() for loading char arrays and evalf() for loading files.
 The utility uses the dynamic library loader to open files using dlopen() and getting function
 pointers dlsym(). Because of that, the utility COULD NOT run on Windows (MacOSX untested) and
-must be compiled using the -ldl in gcc (example below).
-Also, the utility REQUIRES gcc or g++ or other compilers(depends of the project)
+must be compiled using -ldl in gcc (example below).
+Also, the utility REQUIRES gcc or g++ or other compilers (depends of the project)
 to be installed in the user's machine (compilation done at runtime requires compilers).
 All the defined preprocessors can be called alone as for every modules of the utility.
 The preprocessors are defined using the ECL_ prefix.
