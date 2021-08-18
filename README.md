@@ -8,18 +8,20 @@ In order to use this utility, correct instructions must be entered (example bell
 to the running application's architecture (as it is technically machine code).
 
 INFO:
-Shellcodes can be extracted from various utilities like GDB or Objdump from compiled (but not linked)
-C or C++ codes.
-It is recommended to use the -fno-pic and -no-pie during the shellcode compilation in order to get
-static stack memory pointer allocation and getting rid of unnecessary sections.
-The Optimisation flags -O(x) are also recommended as they creates shorter shellcodes.
+
+  Shellcodes can be extracted from various utilities like GDB or Objdump from compiled (but not linked)
+  C or C++ codes.
+  It is recommended to use the -fno-pic and -no-pie during the shellcode compilation in order to get
+  static stack memory pointer allocation and getting rid of unnecessary sections.
+  The Optimisation flags -O(x) are also recommended as they creates shorter shellcodes.
 
 WARN:
-The functions used in the shellcodes (if they are compiled from c) SHALL NOT be named main().
-The usage of the main() function might cause unexpected results (mostly unnecessary lines).
-The flags -fno-stack_protector and -z execstack should be passed to the compiler while
-compiling the main application. Not toggling those flags might stop the program with
-Segmentation Faults or Illega Instruction errors.
+  
+  The functions used in the shellcodes (if they are compiled from c) SHALL NOT be named main().
+  The usage of the main() function might cause unexpected results (mostly unnecessary lines).
+  The flags -fno-stack_protector and -z execstack should be passed to the compiler while
+  compiling the main application. Not toggling those flags might stop the program with
+  Segmentation Faults or Illega Instruction errors.
 
 Examples:
 ```c
