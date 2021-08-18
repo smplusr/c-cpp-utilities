@@ -1,3 +1,77 @@
+# arbitrary-hex-loader [ahl.h]
+This utility is used to directly execute machine code instructions stored in a buffer.
+This method of arbitrary code execution is commonly named shellcode and is mostly used in the
+"hacking" domains of programation, and especialy starting shell or terminal emulator from the client
+(application runner).
+However, shellcodes can be used to run any kind of code during runtime.
+In order to use this utility, correct instructions must be entered (example bellow) which must be corresponding
+to the running application's architecture (as it is technically machine code).
+
+INFO:
+Shellcodes can be extracted from various utilities like GDB or Objdump from compiled (but not linked)
+C or C++ codes.
+It is recommended to use the -fno-pie and -no-pie during the shellcode compilation in order to get
+static stack memory pointer allocation and getting rid of unnecessary sections.
+The Optimisation flags -O(x) are also recommended as they creates shorter shellcodes.
+
+WARN:
+The functions used in the shellcodes (if they are compiled from c) SHALL NOT be named main().
+The usage of the main() function might cause unexpected results (mostly unnecessary lines).
+The flags -fno-stack_protector and -z execstack should be passed to the compiler while
+compiling the main application. Not toggling those flags might stop the program with
+Segmentation Faults or Illega Instruction errors.
+
+Examples:
+```c
+  /* Examples of functions: */
+  
+    // Read user input from terminal
+    ahlReadInput();
+  
+    // Read char array from file
+    ahlReadFile(<FILENAME>);
+  
+    /* Read direct char array and updates the buffer
+     * This function is called by the upward functions */
+    ahlUpdateBuffer(<CHARACTERS>);
+  
+    /* Takes buffer and gives it a pointer
+     * Called by all functions from the utility */
+    ahlAttribPointer(<BUFFER>);
+  
+  
+  /* Examples of variables: */
+  
+    // Generic "all purpose" function pointer
+    ahl_funcptr <DATA>;
+  
+    // Main buffer (result of functions), must be used with ahlAttribPointer()
+    ahl_buffer;
+  
+  
+  /* Examples of program */
+  
+    #include"ahl.h"	// The utility header
+
+    int main(){
+    	ahlUpdateBuffer("b8 0a 00 00 00 c3");	// Buffer that will return 10 (might be content of file)
+	
+	ahl_funcptr func=ahlAttribPointer(ahl_buffer);	// Declaration of function "func" (attribution of pointer)
+	printf("%d\n",func());	// Printing result of function as integer (result is 10, due to return operation of buffer)
+    }
+```
+
+Explanation of the example's shellcode:
+```c
+Disassembly of section .text:
+
+00000000 <func>:
+	0:	b8 0a 00 00 00		mov	$0xa,%eax	// Setting 10 as raw data in memory
+	5:	c3			ret			// Returning (previous declared data)
+```
+
+--------------------------------------------------------------------------------------------------------------
+
 # external-code-loader [ecl.h]
 
 This utility is a sort of replacement of the eval() function known in some interpreted languages.
