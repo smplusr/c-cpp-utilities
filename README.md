@@ -85,6 +85,15 @@ Disassembly of section .text:
 	2:	c3			ret				// Returning, otherwise app will SegFault
 ```
 
+Important links:
+
+Chart of assembly/opcode instructions:		http://sparksandflames.com/files/x86InstructionChart.html
+list of assemly/opcode instructions:		http://ref.x86asm.net/coder32.html#x0F89
+
+Hello world in shellcode:			https://stackoverflow.com/questions/15593214/linux-shellcode-hello-world
+Calling c functions from shellcode:		https://stackoverflow.com/questions/43282303/calling-c-functions-shellcode
+Jump instruction shellcode:			https://stackoverflow.com/questions/9815448/jmp-instruction-hex-code
+
 --------------------------------------------------------------------------------------------------------------
 
 # external-code-loader [ecl.h]
