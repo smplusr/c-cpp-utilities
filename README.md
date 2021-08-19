@@ -89,13 +89,6 @@ Disassembly of section .text:
 	0:	b8 78 56 43 12		mov	$0x12345678, %eax	// Same but with 'eax' register
 	1:	ff d0			call	%eax			// Using call unstead of jump
 	2:	c3			ret				// Always returning
-	
-	OR:
-	
-	0:	b8 78 56 34 12		mov	$0x12345678, %eax	// Same
-	1:	ff f0			lock 	%eax			// Use of lock prefix
-	2: 	50			push	%eax			// Same effect as call, can be repeated (multiple pushes or locks)
-	3:	c3			ret				// Return
 ```
 
 Important links:
