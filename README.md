@@ -83,12 +83,19 @@ Disassembly of section .text:
 	0:	48 c7 c0 78 56 34 12   	mov	rax, 0x12345678		// Set register 'rax' to address, see WARN section
 	1:	ff e0			jmp	rax			// Jump to stored address
 	2:	c3			ret				// Returning, otherwise app will SegFault
+	
+	OR:
+	
+	0:	b8 78 56 43 12		mov	eax,0x12345678		// Same but with 'eax' register
+	1:	ff d0			call	eax			// Using call unstead of jump
+	2:	c3			ret				// Always returning
 ```
 
 Important links:
 ```
 Chart of assembly/opcode instructions:		http://sparksandflames.com/files/x86InstructionChart.html
 List of assemly/opcode instructions:		http://ref.x86asm.net/coder32.html
+Other list of instructions:			http://www.mathemainzel.info/files/x86asmref.html
 
 Hello world in shellcode:			https://stackoverflow.com/questions/15593214/linux-shellcode-hello-world
 Calling c functions from shellcode:		https://stackoverflow.com/questions/43282303/calling-c-functions-shellcode
