@@ -88,7 +88,7 @@ Disassembly of section .text:
 Important links:
 ```
 Chart of assembly/opcode instructions:		http://sparksandflames.com/files/x86InstructionChart.html
-List of assemly/opcode instructions:		http://ref.x86asm.net/coder32.html#x0F89
+List of assemly/opcode instructions:		http://ref.x86asm.net/coder32.html
 
 Hello world in shellcode:			https://stackoverflow.com/questions/15593214/linux-shellcode-hello-world
 Calling c functions from shellcode:		https://stackoverflow.com/questions/43282303/calling-c-functions-shellcode
