@@ -19,7 +19,7 @@ WARN:
   
   The functions used in the shellcodes (if they are compiled from c) SHALL NOT be named main().
   The usage of the main() function might cause unexpected results (mostly unnecessary lines).
-  The flags -fno-stack_protector and -z execstack should be passed to the compiler while
+  The flags -fno-stack-protector and -zexecstack should be passed to the compiler while
   compiling the main application. Not toggling those flags might stop the program with
   Segmentation Faults or Illegal Instruction errors.
   Be careful when pushing memory address to a assembly register. The address might be inverted !
