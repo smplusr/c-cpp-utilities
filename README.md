@@ -80,15 +80,21 @@ Explanation of the example's shellcode:
 Disassembly of section .text:
 
 00000000 <func>:
-	0:	48 c7 c0 78 56 34 12   	mov	$0x12345678, %rax	// Set register 'rax' to address, see WARN section
+	0:	48 c7 c0 78 56 34 12   	mov	$0x12345678, %rax	// Move address to 'rax' register, see WARN section
 	1:	ff e0			jmp	%rax			// Jump to stored address
 	2:	c3			ret				// Returning, otherwise app will SegFault
-	
-	OR:
-	
+```
+OR:
+```	
 	0:	b8 78 56 43 12		mov	$0x12345678, %eax	// Same but with 'eax' register
 	1:	ff d0			call	%eax			// Using call unstead of jump
 	2:	c3			ret				// Always returning
+```	
+OR SIMPLY:
+```
+	0:	b8 78 56 34 12		mov	$0x12345678, %eax	// Again
+	1:	50			push	%eax			// Pushing 'eax' register to stack (calls the function)
+	2:	c3			ret				// Returning
 ```
 
 Important links:
