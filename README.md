@@ -21,7 +21,10 @@ WARN:
   The usage of the main() function might cause unexpected results (mostly unnecessary lines).
   The flags -fno-stack_protector and -z execstack should be passed to the compiler while
   compiling the main application. Not toggling those flags might stop the program with
-  Segmentation Faults or Illega Instruction errors.
+  Segmentation Faults or Illegal Instruction errors.
+  Be careful when pushing memory address to a assembly register. The address might be inverted !
+  The stack execution flags must be turned on when calling function within the main program
+  from the shellcode.
 
 Examples:
 ```c
@@ -68,8 +71,18 @@ Explanation of the example's shellcode:
 Disassembly of section .text:
 
 00000000 <func>:
-	0:	b8 0a 00 00 00		mov	$0xa,%eax	// Setting 10 as raw data in memory
-	5:	c3			ret			// Returning (previous declared data)
+	0:	b8 0a 00 00 00		mov	$0xa, %eax		// Setting 10 as raw data in memory
+	1:	c3			ret				// Returning (previous declared data)
+```
+
+Explanation of the example's shellcode:
+```c
+Disassembly of section .text:
+
+00000000 <func>:
+	0:	48 c7 c0 78 56 34 12   	mov	rax, 0x12345678		// Set register 'rax' to address, see WARN section
+	1:	ff e0			jmp	rax			// Jump to stored address
+	2:	c3			ret				// Returning, otherwise app will SegFault
 ```
 
 --------------------------------------------------------------------------------------------------------------
