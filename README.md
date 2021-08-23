@@ -25,6 +25,8 @@ WARN:
   Be careful when pushing memory address to a assembly register. The address might be inverted !
   The stack execution flags must be turned on when calling function within the main program
   from the shellcode.
+  Examples shellcodes were only tested on 32 bit systems. They should work on 64 bit systems if the compilation
+  flag -m32 is triggered.
 
 Examples:
 ```c
