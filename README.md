@@ -154,8 +154,8 @@ WARNING:
 
 FUNCTION USAGE:
   ```c
-  evalc(const char data[256])     //Where data represents the input char array
-  evalf(const char* file)         //Where file represents the input file
+  eclEvalData(const char data[256])     //Where data represents the input char array
+  eclEvalFile(const char* file)         //Where file represents the input file
   ```
 
 EXAMPLES:
@@ -193,10 +193,10 @@ All the defined preprocessors can be called alone as for every modules of the ut
 The preprocessors are defined using RCP_ prefix.
 
 In order to initialyse it, 4 parameters must be defined:
-AUTO_RECOMPILE: 	used to compile and then process the utility.
-RECOMPILE_HEADERS: 	for calling the compilation of the extra "header" bin.
-SOURCE_PATH: 		the path to the "source" bin.
-HEADER_PATH:		the path to the "header" bin.
+RCP_AUTO_RECOMPILE: 		used to compile and then process the utility.
+RCP_RECOMPILE_HEADERS:	 	for calling the compilation of the extra "header" bin.
+RCP_SOURCE_PATH: 		the path to the "source" bin.
+RCP_HEADER_PATH:		the path to the "header" bin.
 
 The paths must lead to a (chosen extension and named) file that will feed a system() function
 and parse all the line as OS speecific argument. 
@@ -214,7 +214,7 @@ EXAMPLE:
 /* Must be defined before including the rki or rmi header file.
  * If the dev input file is not declared before including rki.h or rmi.h, it will be defined
  * inside the headers with the default input file (same as following). */
-#define RSI_MOUSE_INPUT_FILE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+#define RSI_KEYBOARD_INPUT_FILE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
 #define RSI_MOUSE_INPUT_FILE "/dev/input/mice"
 #include"rsi.h"
 
@@ -278,13 +278,13 @@ EXAMPLES:
     object_instance.func=<FUNCTION>;
     
     //Adding object_instance to the item_list[] array
-    add_item(object_instance);
+    socAddItem(object_instance);
     
     //Updating all the items inside the item_list[] array
-    upt_item();
+    socUptItem();
     
     //Removing item by if 0
-    del_item(0);
+    socDelItem(0);
     
     //Accessing all object in the item_list and printing their id
     ITEM_LOOP(printf("%d",item_list[i].id);)
