@@ -32,14 +32,14 @@
 		dlclose(lib); init();\
 		if(access("tmp.so",F_OK)==0) system("rm tmp.so");
 	
-void evalc(const char data[256]){
+void eclEvalData(const char data[256]){
 	FILE *fptr;
 	fptr=fopen("tmp.c","w"); fprintf(fptr,"%s",data); fclose(fptr);
 		ECL_COMPILE; ECL_LOAD_LIB();
 		if(access("tmp.c",F_OK)==0) system("rm tmp.c");
 }
 
-void evalf(const char *file){
+void eclEvalFile(const char *file){
 	char *buffer=(char*)malloc(512);
 	strcat(buffer,"cp "); strcat(buffer,file); strcat(buffer," tmp.c "); system(buffer);
 		ECL_COMPILE; ECL_LOAD_LIB();
