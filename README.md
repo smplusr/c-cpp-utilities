@@ -223,8 +223,8 @@ EXAMPLE:
 int key_buffer[256];
 
 void key_callback(int key,int act){
-	if(act==RKI_KEY_PRESSED) key_buffer[key]=1;
-	if(act==RKI_KEY_RELEASE) key_buffer[key]=0;
+	if(act==RSI_KEY_PRESSED) key_buffer[key]=1;
+	if(act==RSI_KEY_RELEASE) key_buffer[key]=0;
 }
 void mouse_callback(int x,int y,int button[3]){
 	printf("x=%d, y=%d, l=%d, m=%d, r=%d\n",x,y,button[0],button[1],button[2]);
