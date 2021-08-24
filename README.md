@@ -68,7 +68,7 @@ Examples:
     }
 ```
 
-32 bit mode CPU (i686 or x86) shellcode:
+32 bit mode CPU (i686 or x86) shellcode example:
 ```c
 Disassembly of section .text:
 
