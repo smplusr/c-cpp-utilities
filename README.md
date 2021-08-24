@@ -68,7 +68,7 @@ Examples:
     }
 ```
 
-Explanation of the example's shellcode:
+32 bit mode CPU (i686 or x86) shellcode:
 ```c
 Disassembly of section .text:
 
@@ -76,8 +76,7 @@ Disassembly of section .text:
 	0:	b8 0a 00 00 00		mov	$0xa, %eax		// Setting 10 as raw data in memory
 	1:	c3			ret				// Returning (previous declared data)
 ```
-
-Explanation of the example's shellcode:
+ANOTHER:
 ```c
 Disassembly of section .text:
 
