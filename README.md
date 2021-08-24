@@ -68,7 +68,9 @@ Examples:
     }
 ```
 
+
 32 bit mode CPU (i686 or x86) shellcode example:
+
 Data returning:
 ```c
 Disassembly of section .text:
