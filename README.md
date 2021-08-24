@@ -28,7 +28,7 @@ WARN:
   Examples shellcodes were only tested on 32 bit systems. They should work on 64 bit systems if the compilation
   flag -m32 is triggered.
 
-Examples:
+EXAMPLE:
 ```c
   /* Examples of functions: */
   
