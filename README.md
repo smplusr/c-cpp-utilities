@@ -28,7 +28,7 @@ WARN:
   Examples shellcodes were only tested on 32 bit systems. They should work on 64 bit systems if the compilation
   flag -m32 is triggered.
 
-EXAMPLE:
+EXAMPLES:
 ```c
   /* Examples of functions: */
   
@@ -211,7 +211,7 @@ This input utility is a mouse and keyboard handler for linux.
 It is similar to glut (freeglut) or glfw input managing system, but only supports linux (as of current version).
 See the following example for more information about how to use the api.
 
-EXAMPLE:
+EXAMPLES:
 ```c
 /* Must be defined before including the rki or rmi header file.
  * If the dev input file is not declared before including rki.h or rmi.h, it will be defined
