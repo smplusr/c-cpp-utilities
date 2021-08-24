@@ -89,20 +89,20 @@ Disassembly of section .text:
 	2:	c3			ret				// Returning, otherwise app will SegFault
 ```
 OR:
-```	
+```c	
 	0:	b8 78 56 43 12		mov	$0x12345678, %eax	// Same but with 'eax' register
 	1:	ff d0			call	%eax			// Using call unstead of jump
 	2:	c3			ret				// Always returning
 ```	
 OR SIMPLY:
-```
+```c
 	0:	b8 78 56 34 12		mov	$0x12345678, %eax	// Again
 	1:	50			push	%eax			// Pushing 'eax' register to stack (calls the function)
 	2:	c3			ret				// Returning
 ```
 
 Important links:
-```
+```c
 Chart of assembly/opcode instructions:		http://sparksandflames.com/files/x86InstructionChart.html
 List of assemly/opcode instructions:		http://ref.x86asm.net/coder32.html
 Other list of instructions:			http://www.mathemainzel.info/files/x86asmref.html
