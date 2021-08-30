@@ -284,7 +284,7 @@ EXAMPLES:
 	void item_func(){
 		SOC_CHECKED_LOOP("object",					// Scanning items (selecting only type 'object')
 			SOC_DATA_LOOP(soc_item_list[i].data,			// Looping through data of items 'object'
-				if(soc_item_list[i].data[j]==(void*)10)		// Testing if scanned and loop-ed item-s has raw void data pointer of reference (binaru 	content) '10'
+				if(soc_item_list[i].data[j]==(void*)10)		// Testing if scanned and loop-ed item-s has raw void data pointer of reference (binary content) '10'
 				printf("%s\n","true");				// If last statment correct, printing true
 			)
 		)
