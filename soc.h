@@ -1,4 +1,4 @@
-define SOC_ITEM_LOOP(X)\
+#define SOC_ITEM_LOOP(X)\
     	for(unsigned int i=0;i<soc_num_item;i++)\
         	X;
 
