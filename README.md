@@ -211,6 +211,15 @@ This input utility is a mouse and keyboard handler for linux.
 It is similar to glut (freeglut) or glfw input managing system, but only supports linux (as of current version).
 See the following example for more information about how to use the api.
 
+INFO:
+
+Linux keys macros can be found on various github pages such as the following:
+https://github.com/spotify/linux/blob/master/include/linux/input.h
+
+WARN:
+
+Keyboard disposition is QWERTY only ! It means that KEY_A on AZERTY keyboard correspond to KEY_Q (a is q).
+
 EXAMPLES:
 ```c
 /* Must be defined before including the rki or rmi header file.
