@@ -282,7 +282,7 @@ EXAMPLES:
 	void *buff[65536]={(void*)20,(void*)10,"aaa"}; 				// Example data
 	
 	void item_func(){
-		SOC_CHECKED_LOOP("object",					// Scanning items (selecting only type 'object')
+		SOC_CHECKED_LOOP(						// Looping through items
 			SOC_DATA_LOOP(soc_item_list[i].data,			// Looping through data of items 'object'
 				if(soc_item_list[i].data[j]==(void*)10)		// Testing if scanned and loop-ed item-s has raw void data pointer of reference (binary content) '10'
 				printf("%s\n","true");				// If last statment correct, printing true
