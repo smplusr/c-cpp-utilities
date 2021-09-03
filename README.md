@@ -294,7 +294,6 @@ EXAMPLES:
 	int main(){
 	
 		SOC_ITEM item_instance; 					// Instantiation of object
-		item_instance.type="object";					// Type attribution
 		item_instance.func=item_func;
 		SOC_DATA_LOOP(item_instance.data,item_instance.data[j]=buff[j])	// Setting up data from void array 'dat'
 		*item_instance.data=*buff;					// Other way using pointers
