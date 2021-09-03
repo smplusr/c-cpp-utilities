@@ -5,15 +5,10 @@
 #define SOC_DATA_LOOP(DATABASE,X)\
 	for(unsigned int j=0;j<sizeof(DATABASE)/sizeof(DATABASE[0]);j++)\
 		X;
-	
-#define SOC_CHECKED_LOOP(TYPE,X)\
-	SOC_ITEM_LOOP(if(soc_item_list[i].type==(unsigned char*)TYPE){X;})
-
 
 typedef struct soc_str{
     	unsigned int id;
-	unsigned char *type; 
-    	void (*func)();
+    	void (*func)(int id);
 	void *data[65536];
 } SOC_ITEM;
 
@@ -32,5 +27,5 @@ void socDelItem(unsigned int id){
 }
 
 void socUptItem(){
-	SOC_ITEM_LOOP(soc_item_list[i].func());
+	SOC_ITEM_LOOP(soc_item_list[i].func(soc_item_list[i].id));
 }
