@@ -183,6 +183,44 @@ EXAMPLES:
   //Char array example in C++:
     "#include<iostream>\n extern "C" void __init(){std::cout<<\"Hello World in C from external file !\"<<std::endl;}"
 ```
+--------------------------------------------------------------------------------------------------------------
+
+# framebuffer-graphics-engine [fge.h]
+
+This graphics utility is a low level linux framebuffer mapper.
+It allows drawing to the screen without X or Wayland servers or compositors (using the native fbdev module of the linux kernel).
+Only four functions are contained inside the utility (as the utilities in this project has to stay simple and small), but extension
+of module are a possibility.
+
+EXAMPLE:
+```c
+  FGEdisplay display; 						// must be declared at global scope
+
+  int main(int argc,char **argv){	
+
+    // TESTING
+    FGEpixel red_pixel={255,0,0};				// create red, green and blue pixels 
+    FGEpixel green_pixel={0,255,0};
+    FGEpixel blue_pixel={0,0,255};
+    FGEpixel dark_pixel={22,22,22};
+
+    fgeInit();							// initialize the module
+    int i;
+    while(1){ 
+      fgeFillBuffer(0,0,fge_globals.width,fge_globals.height,dark_pixel,display);
+      i++; display[300+i][300+i]=green_pixel; 			//set a single pixel to green
+
+      fgeFillBuffer(100,100,200,200,red_pixel,display);		// fill some area of the screen with red and blue
+      fgeFillBuffer(150,150,250,250,blue_pixel,display);	// notice that blue will be draw on top of red as it has been called after the red fill function
+
+      fgeSwapBuffers(display);					// swapping buffers (displaying to the screen)
+    }
+    fgeExit();							// exitting the module (cleaning up)
+
+    return EXIT_SUCCESS;
+}
+
+```
 
 --------------------------------------------------------------------------------------------------------------
 
