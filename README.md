@@ -1,4 +1,4 @@
-# arbitrary-hex-loader [ahl.h]
+# arbitrary-Hex/Opcode-loader [ahl.h]
 This utility is used to directly execute machine code instructions stored in a buffer.
 This method of arbitrary code execution is commonly named shellcode and is mostly used in the
 "hacking" domains of programation, and especialy starting shell or terminal emulator from the client
@@ -28,6 +28,13 @@ WARN:
   Examples shellcodes were only tested on 32 bit systems. They should work on 64 bit systems if the compilation
   flag -m32 is triggered.
 
+BARE BONE of the utility:
+```c
+typedef void (*(*AHLfuncptr)())(void);
+void (*(*ahlAttribPointer(unsigned char arg[]))())(void){
+	return ((void (*(*)())(void))(void (*)(void))arg);
+}
+```
 EXAMPLES:
 ```c
   /* Examples of functions: */
