@@ -2,35 +2,32 @@
 #include<stdlib.h>
 #include<string.h>
 
-#define AHL_MAX_CHAR_DATA (int)(65535/sizeof(int))
+#define AHL_BUFFER_SIZE (int)(65535/sizeof(int))
 
-typedef void (*(*ahl_funcptr)())(void);
-unsigned char ahl_buffer[AHL_MAX_CHAR_DATA];
+typedef void (*(*AHLfuncptr)())(void);
+typedef unsigned char AHLbuffer[AHL_BUFFER_SIZE];
 
 void (*(*ahlAttribPointer(unsigned char arg[]))())(void){
 	return ((void (*(*)())(void))(void (*)(void))arg);
 }
-
-void ahlUpdateBuffer(char *v){
-	char c[AHL_MAX_CHAR_DATA];
+void ahlUpdateBuffer(char *v,AHLbuffer b){
+	AHLbuffer c;
 	int i=0;
 	strcat(c,v);	
 	for(int i=0;i<(strlen(c)+5);i++){
 		sscanf(c,"%hhx",c);
-		ahl_buffer[i]=*c;
+		b[i]=*c;
 		for(int j=0;j<3;j++) memmove(c,c+1,strlen(c+1)+1);
 	}
 }
-
-void ahlReadInput(){	
-	char c[AHL_MAX_CHAR_DATA];
+void ahlReadInput(AHLbuffer b){
+	AHLbuffer c;
 	scanf("%[^\n]",c);
-	ahlUpdateBuffer(c);
+	ahlUpdateBuffer(c,b);
 }
-
-void ahlReadFile(const char *file){	
-	char c[AHL_MAX_CHAR_DATA];
+void ahlReadFile(const char *file,AHLbuffer b){	
+	AHLbuffer c;
 	FILE *fptr=fopen(file,"r");
 	while(1) if(fscanf(fptr,"%[^_]",c)==EOF) break;
-	ahlUpdateBuffer(c);
+	ahlUpdateBuffer(c,b);
 }

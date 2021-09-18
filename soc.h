@@ -10,13 +10,13 @@ typedef struct soc_str{
     	unsigned int id;
     	void (*func)(int id);
 	void *data[65536];
-} SOC_ITEM;
+} SOCitem;
 
 
-SOC_ITEM soc_item_list[256];
+SOCitem soc_item_list[256];
 unsigned int soc_num_item;
 
-void socAddItem(SOC_ITEM item){
+void socAddItem(SOCitem item){
 	item.id=soc_num_item;
 	soc_item_list[soc_num_item]=item;
 	soc_num_item++;
