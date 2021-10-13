@@ -44,14 +44,6 @@ void fgeExit(){
 	munmap(fge_globals.map,fge_globals.screen_len);
 	close(fge_globals.fd);
 }
-
-void fgeFillBuffer(int x,int y,int w,int h,FGEpixel pixel,FGEdisplay display){
-	for(int i=0;i<h-y;i++){
-		for(int j=0;j<w-x;j++){
-			display[i+y][j+x]=pixel;
-		}
-	}
-}
 void fgeSwapBuffers(FGEdisplay display){
 	unsigned char *surface=fge_globals.map+(fge_globals.py)*fge_globals.info.xres*fge_globals.info.bits_per_pixel/8+(fge_globals.px)*fge_globals.info.bits_per_pixel/8;
 	for(int i=0;i<fge_globals.height;i++){
