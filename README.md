@@ -211,18 +211,18 @@ EXAMPLE:
     FGEpixel blue_pixel={0,0,255};
     FGEpixel dark_pixel={22,22,22};
 
-    fgeInit();							// initialize the module
+    fgeInit();							// initializes the module
     int i;
     while(1){ 
       fgeFillBuffer(0,0,fge_globals.width,fge_globals.height,dark_pixel,display);
       i++; display[300+i][300+i]=green_pixel; 			//set a single pixel to green
 
       fgeFillBuffer(100,100,200,200,red_pixel,display);		// fill some area of the screen with red and blue
-      fgeFillBuffer(150,150,250,250,blue_pixel,display);	// notice that blue will be draw on top of red as it has been called after the red fill function
+      fgeFillBuffer(150,150,250,250,blue_pixel,display);	// notice that blue will be drawn on top of red as it has been called after the red fill function
 
       fgeSwapBuffers(display);					// swapping buffers (displaying to the screen)
     }
-    fgeExit();							// exitting the module (cleaning up)
+    fgeExit();							// exiting the module (cleaning up)
 
     return EXIT_SUCCESS;
 }
